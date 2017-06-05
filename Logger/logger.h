@@ -17,10 +17,12 @@
  * Common section 
 \****************************************************************/
 /* Defines and ENUMS */
-#define CRITICAL_LOG 0X01
-#define ERROR_LOG 0x03
-#define INFO_LOG 0x07
-#define DEBUG_LOG 0x0F
+typedef enum LogLevel_e {
+	CRITICAL_LOG = 0X01,
+	ERROR_LOG,		/* 0x02 */
+	INFO_LOG,		/* 0x03 */
+	DEBUG_LOG,		/* 0x04 */
+}LogLevel_et;
 
 #define LOG( level, file, line, format, ... ) log( (level), (file), (line), format, ##__VA_ARGS__ )
 
@@ -37,5 +39,6 @@
 
 /* function prototype */
 void log( unsigned char, unsigned char *, long int, unsigned char *, ... ); 
+void initLog( LogLevel_et );
 
 #endif
